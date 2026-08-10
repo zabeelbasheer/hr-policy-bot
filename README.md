@@ -2,7 +2,7 @@
 
 > Multi-document HR policy chatbot with geo-aware labour law context. Upload any combination of HR policy PDFs, ask questions across all of them simultaneously, and get cited answers enriched with applicable labour law by region.
 
-**🚀 Live Demo:** https://zeta-policy-assistant.onrender.com
+**Live Demo:** https://zeta-policy-assistant.onrender.com
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green)
