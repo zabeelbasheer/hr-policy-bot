@@ -2,7 +2,7 @@
 
 > RAG-powered chatbot that answers employee HR policy questions from any uploaded PDF — with source page citations and follow-up suggestions.
 
-**🚀 Live Demo:** *(deploy link here after Streamlit Cloud setup)*
+****🚀 Live Demo:** https://zeta-policy-assistant.onrender.com*
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.60-red)
