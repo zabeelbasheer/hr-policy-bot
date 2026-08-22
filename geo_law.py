@@ -138,7 +138,7 @@ def get_labour_law_context(question: str, geo: str, state: str = None) -> dict:
     client = get_client()
     try:
         response = client.chat.completions.create(
-            model=os.getenv("MODEL_NAME", "llama-3.3-70b-versatile"),
+            model=os.getenv("MODEL_NAME", "openai/gpt-oss-120b"),
             messages=[
                 {"role": "system", "content": RELEVANCE_SYSTEM},
                 {"role": "user",   "content": prompt},

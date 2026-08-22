@@ -740,8 +740,15 @@ async function sendQuestion() {
     });
 
     if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.detail || "Something went wrong");
+      let detail = "Something went wrong";
+      try {
+        const err = await res.json();
+        detail = err.detail || detail;
+      } catch {
+        // Response wasn't JSON, e.g. a bare 500 with no error body. Keep the generic message
+        // instead of crashing on the parse itself.
+      }
+      throw new Error(detail);
     }
 
     const data = await res.json();
