@@ -450,6 +450,14 @@ select:focus { border-color: var(--amber); }
 .toast.show { transform: translateY(0); opacity: 1; }
 .toast.success { background: #1a4a2c; }
 .toast.error   { background: #4a1a1a; }
+.answer-markdown { line-height: 1.6; }
+.answer-markdown p { margin: 0 0 10px; }
+.answer-markdown p:last-child { margin-bottom: 0; }
+.answer-markdown ul, .answer-markdown ol { margin: 0 0 10px 20px; padding: 0; }
+.answer-markdown li { margin-bottom: 4px; }
+.answer-markdown strong { color: var(--midnight); font-weight: 700; }
+.answer-markdown code { background: var(--parchment); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; font-size: 0.9em; }
+.answer-markdown h1, .answer-markdown h2, .answer-markdown h3 { font-size: 1em; font-weight: 700; margin: 10px 0 6px; color: var(--midnight); }
 </style>
 </head>
 <body>
@@ -584,6 +592,7 @@ select:focus { border-color: var(--amber); }
 <!-- Toast -->
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/18.0.10/marked.min.js"></script>
 <script>
 // ── State ──────────────────────────────────────────────────────────────────
 const GEO_STATES = {
@@ -808,9 +817,12 @@ function appendAssistantMessage(data) {
   const bubble = document.createElement("div");
   bubble.className = "bubble assistant";
 
-  // Answer text
+  // Answer text — rendered as markdown, since the model formats with bold, lists, headers
   const answerEl = document.createElement("div");
-  answerEl.textContent = data.answer;
+  answerEl.className = "answer-markdown";
+  answerEl.innerHTML = (typeof marked !== "undefined")
+    ? marked.parse(data.answer || "")
+    : (data.answer || "").replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   bubble.appendChild(answerEl);
 
   // Citations
