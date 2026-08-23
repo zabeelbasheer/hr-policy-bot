@@ -6,7 +6,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green)
-![Groq](https://img.shields.io/badge/Groq-llama--3.3--70b-orange)
+![Groq](https://img.shields.io/badge/Groq-gpt--oss--120b-orange)
 ![FAISS](https://img.shields.io/badge/Vector%20Store-FAISS-teal)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -118,7 +118,7 @@ Employee Question ──► Query vector → Top 5 chunks retrieved
                                           │
                               ┌───────────┴───────────┐
                               ▼                       ▼
-                    Groq llama-3.3-70b        Geo-Law Engine
+                    Groq gpt-oss-120b         Geo-Law Engine
                     (answer + citations)      (relevance check
                                               + law summary)
                               │                       │
@@ -138,7 +138,7 @@ Employee Question ──► Query vector → Top 5 chunks retrieved
 | Component | Technology |
 |-----------|-----------|
 | Backend | FastAPI 0.111 + Uvicorn |
-| LLM inference | Groq API — llama-3.3-70b-versatile |
+| LLM inference | Groq API — openai/gpt-oss-120b |
 | Vector search | FAISS IndexFlatIP (cosine similarity) |
 | PDF parsing | pdfplumber |
 | Embeddings | TF-IDF (zero external API dependency) |
@@ -163,7 +163,7 @@ Open `http://localhost:8000`
 ### `.env`
 ```
 GROQ_API_KEY=your_groq_key_here
-MODEL_NAME=llama-3.3-70b-versatile
+MODEL_NAME=openai/gpt-oss-120b
 ```
 
 ---
