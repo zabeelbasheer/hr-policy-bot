@@ -135,8 +135,8 @@ def get_labour_law_context(question: str, geo: str, state: str = None) -> dict:
         f"Assess whether this question has a labour law dimension and provide context."
     )
 
-    client = get_client()
     try:
+        client = get_client()
         response = client.chat.completions.create(
             model=os.getenv("MODEL_NAME", "openai/gpt-oss-120b"),
             messages=[
@@ -145,6 +145,8 @@ def get_labour_law_context(question: str, geo: str, state: str = None) -> dict:
             ],
             temperature=0.1,
             max_tokens=300,
+            response_format={"type": "json_object"},
+            reasoning_effort="low",
         )
         raw = response.choices[0].message.content.strip()
         if raw.startswith("```"):
